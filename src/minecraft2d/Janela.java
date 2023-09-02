@@ -4,8 +4,6 @@ import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class Janela extends JFrame implements KeyListener {
 
@@ -13,7 +11,10 @@ public class Janela extends JFrame implements KeyListener {
     private final int cols = 20;
     private final int rows = 20;
 
-    private final String steve = "./src/img/steve.png";
+    private final String stevedireita = "./src/img/stevedireita.png";
+    private final String steveesquerda = "./src/img/steveesquerda.png";
+    private final String stevefrente = "./src/img/stevefrente.png";
+    private final String stevecostas = "./src/img/stevecostas.png";
     private final String madeira = "./src/img/madeira.png";
     private final String terra = "./src/img/terra.jpg";
     private final String ceu = "./src/img/ceu.png";
@@ -26,7 +27,10 @@ public class Janela extends JFrame implements KeyListener {
 
     private int[] tipoblocos;
 
-    private ImageIcon STEVE;
+    private ImageIcon STEVEDIREITA;
+    private ImageIcon STEVEESQUERDA;
+    private ImageIcon STEVEFRENTE;
+    private ImageIcon STEVECOSTAS;
     private ImageIcon FLOR;
     private ImageIcon CEU;
     private ImageIcon TERRA;
@@ -41,7 +45,10 @@ public class Janela extends JFrame implements KeyListener {
 
         this.setLayout(new GridLayout(rows, cols));
 
-        STEVE = new ImageIcon(steve);
+        STEVEDIREITA = new ImageIcon(stevedireita);
+        STEVEESQUERDA = new ImageIcon(steveesquerda);
+        STEVEFRENTE = new ImageIcon(stevefrente);
+        STEVECOSTAS = new ImageIcon(stevecostas);
         CEU = new ImageIcon(ceu);
         FLOR = new ImageIcon(flor);
         TERRA = new ImageIcon(terra);
@@ -60,6 +67,7 @@ public class Janela extends JFrame implements KeyListener {
                     || i == 117 || i == 118) {
                 myPanel[i] = new MyPanel(NUVEM);
                 this.add(myPanel[i]);
+
             } else {
                 myPanel[i] = new MyPanel(CEU);
                 this.add(myPanel[i]);
@@ -68,12 +76,12 @@ public class Janela extends JFrame implements KeyListener {
         }
 
         posicaoSTEVE = 210;
-        myPanel[210].setIcon(STEVE);
+        myPanel[210].setIcon(STEVEFRENTE);
 
         this.addKeyListener(this);
 
         this.setTitle("Minecraft 2D");
-        this.setSize(800, 800);
+        this.setSize(700, 700);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -90,13 +98,13 @@ public class Janela extends JFrame implements KeyListener {
                 return TERRA;
             case 4:
                 return MADEIRA;
-
             case 5:
                 return COBBLESTONE;
             case 6:
                 return NUVEM;
 
             default:
+
                 return CEU;
         }
     }
@@ -106,35 +114,117 @@ public class Janela extends JFrame implements KeyListener {
 
         // movimentações
         if (key.getKeyCode() == KeyEvent.VK_RIGHT) {
-            myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
-            posicaoSTEVE++;
-            if (posicaoSTEVE > size - 1)
-                posicaoSTEVE = 0;
-            myPanel[posicaoSTEVE].setIcon(STEVE);
+            if (getIcon(posicaoSTEVE + 1) != CEU) {
+
+            } else {
+                if (posicaoSTEVE == 103 || posicaoSTEVE == 104 || posicaoSTEVE == 105 || posicaoSTEVE == 106
+                        || posicaoSTEVE == 107 || posicaoSTEVE == 84 || posicaoSTEVE == 85 || posicaoSTEVE == 91
+                        || posicaoSTEVE == 92
+                        || posicaoSTEVE == 93 || posicaoSTEVE == 94 || posicaoSTEVE == 95 || posicaoSTEVE == 96
+                        || posicaoSTEVE == 48 || posicaoSTEVE == 54 || posicaoSTEVE == 73 || posicaoSTEVE == 74
+                        || posicaoSTEVE == 75
+                        || posicaoSTEVE == 117 || posicaoSTEVE == 118) {
+                    myPanel[posicaoSTEVE].setIcon(NUVEM);
+                    posicaoSTEVE++;
+                    if (posicaoSTEVE > size - 1)
+                        posicaoSTEVE = 0;
+                    myPanel[posicaoSTEVE].setIcon(STEVEDIREITA);
+
+                } else {
+
+                    myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
+                    posicaoSTEVE++;
+                    if (posicaoSTEVE > size - 1)
+                        posicaoSTEVE = 0;
+                    myPanel[posicaoSTEVE].setIcon(STEVEDIREITA);
+                }
+            }
         }
 
         if (key.getKeyCode() == KeyEvent.VK_LEFT) {
-            myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
-            posicaoSTEVE--;
-            if (posicaoSTEVE < 0)
-                posicaoSTEVE = size - 1;
-            myPanel[posicaoSTEVE].setIcon(STEVE);
+            if (getIcon(posicaoSTEVE - 1) != CEU) {
+
+            } else {
+                if (posicaoSTEVE == 103 || posicaoSTEVE == 104 || posicaoSTEVE == 105 || posicaoSTEVE == 106
+                        || posicaoSTEVE == 107 || posicaoSTEVE == 84 || posicaoSTEVE == 85 || posicaoSTEVE == 91
+                        || posicaoSTEVE == 92
+                        || posicaoSTEVE == 93 || posicaoSTEVE == 94 || posicaoSTEVE == 95 || posicaoSTEVE == 96
+                        || posicaoSTEVE == 48 || posicaoSTEVE == 54 || posicaoSTEVE == 73 || posicaoSTEVE == 74
+                        || posicaoSTEVE == 75
+                        || posicaoSTEVE == 117 || posicaoSTEVE == 118) {
+
+                    myPanel[posicaoSTEVE].setIcon(NUVEM);
+                    posicaoSTEVE--;
+                    if (posicaoSTEVE < 0)
+                        posicaoSTEVE = size - 1;
+                    myPanel[posicaoSTEVE].setIcon(STEVEESQUERDA);
+                } else {
+
+                    myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
+                    posicaoSTEVE--;
+                    if (posicaoSTEVE < 0)
+                        posicaoSTEVE = size - 1;
+                    myPanel[posicaoSTEVE].setIcon(STEVEESQUERDA);
+                }
+            }
         }
 
         if (key.getKeyCode() == KeyEvent.VK_DOWN) {
-            myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
-            posicaoSTEVE += 20;
-            if (posicaoSTEVE > 399)
-                posicaoSTEVE = posicaoSTEVE - 399;
-            myPanel[posicaoSTEVE].setIcon(STEVE);
+            if (getIcon(posicaoSTEVE + 20) != CEU) {
+
+            } else {
+
+                if (posicaoSTEVE == 103 || posicaoSTEVE == 104 || posicaoSTEVE == 105 || posicaoSTEVE == 106
+                        || posicaoSTEVE == 107 || posicaoSTEVE == 84 || posicaoSTEVE == 85 || posicaoSTEVE == 91
+                        || posicaoSTEVE == 92
+                        || posicaoSTEVE == 93 || posicaoSTEVE == 94 || posicaoSTEVE == 95 || posicaoSTEVE == 96
+                        || posicaoSTEVE == 48 || posicaoSTEVE == 54 || posicaoSTEVE == 73 || posicaoSTEVE == 74
+                        || posicaoSTEVE == 75
+                        || posicaoSTEVE == 117 || posicaoSTEVE == 118) {
+                    myPanel[posicaoSTEVE].setIcon(NUVEM);
+                    posicaoSTEVE += 20;
+                    if (posicaoSTEVE > 399)
+                        posicaoSTEVE = posicaoSTEVE - 399;
+                    myPanel[posicaoSTEVE].setIcon(STEVEFRENTE);
+                } else {
+
+                    myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
+                    posicaoSTEVE += 20;
+                    if (posicaoSTEVE > 399)
+                        posicaoSTEVE = posicaoSTEVE - 399;
+                    myPanel[posicaoSTEVE].setIcon(STEVEFRENTE);
+
+                }
+
+            }
         }
 
         if (key.getKeyCode() == KeyEvent.VK_UP) {
-            myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
-            posicaoSTEVE -= 20;
-            if (posicaoSTEVE < 0)
-                posicaoSTEVE = 399 - (Math.abs(posicaoSTEVE));
-            myPanel[posicaoSTEVE].setIcon(STEVE);
+            if (getIcon(posicaoSTEVE - 20) != CEU) {
+
+            } else {
+                if (posicaoSTEVE == 103 || posicaoSTEVE == 104 || posicaoSTEVE == 105 || posicaoSTEVE == 106
+                        || posicaoSTEVE == 107 || posicaoSTEVE == 84 || posicaoSTEVE == 85 || posicaoSTEVE == 91
+                        || posicaoSTEVE == 92
+                        || posicaoSTEVE == 93 || posicaoSTEVE == 94 || posicaoSTEVE == 95 || posicaoSTEVE == 96
+                        || posicaoSTEVE == 48 || posicaoSTEVE == 54 || posicaoSTEVE == 73 || posicaoSTEVE == 74
+                        || posicaoSTEVE == 75
+                        || posicaoSTEVE == 117 || posicaoSTEVE == 118) {
+                    myPanel[posicaoSTEVE].setIcon(NUVEM);
+                    posicaoSTEVE -= 20;
+                    if (posicaoSTEVE < 0)
+                        posicaoSTEVE = 399 - (Math.abs(posicaoSTEVE));
+                    myPanel[posicaoSTEVE].setIcon(STEVECOSTAS);
+
+                } else {
+
+                    myPanel[posicaoSTEVE].setIcon(getIcon(posicaoSTEVE));
+                    posicaoSTEVE -= 20;
+                    if (posicaoSTEVE < 0)
+                        posicaoSTEVE = 399 - (Math.abs(posicaoSTEVE));
+                    myPanel[posicaoSTEVE].setIcon(STEVECOSTAS);
+                }
+            }
         }
 
         // construções
@@ -172,7 +262,6 @@ public class Janela extends JFrame implements KeyListener {
             keyPressed(key);
         }
         if (key.getKeyCode() == KeyEvent.VK_6) {
-            JOptionPane.showMessageDialog(null, posicaoSTEVE);
             myPanel[posicaoSTEVE].setIcon(NUVEM);
             tipoblocos[posicaoSTEVE] = 6;
             key.setKeyCode(KeyEvent.VK_UP);
@@ -180,9 +269,17 @@ public class Janela extends JFrame implements KeyListener {
         }
 
         if (key.getKeyCode() == KeyEvent.VK_SPACE) {
-            myPanel[posicaoSTEVE].setIcon(CEU);
-            tipoblocos[posicaoSTEVE] = 0;
-            key.setKeyCode(KeyEvent.VK_UP);
+             myPanel[posicaoSTEVE-1].setIcon(CEU);
+            tipoblocos[posicaoSTEVE-1] = 0;
+             myPanel[posicaoSTEVE+1].setIcon(CEU);
+            tipoblocos[posicaoSTEVE+1] = 0;
+            myPanel[posicaoSTEVE+20].setIcon(CEU);
+            tipoblocos[posicaoSTEVE+20] = 0;
+             myPanel[posicaoSTEVE-20].setIcon(CEU);
+            tipoblocos[posicaoSTEVE-20] = 0;
+            
+            
+            key.setKeyCode(KeyEvent.VK_DOWN);
             keyPressed(key);
         }
     }
